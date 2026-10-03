@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Contact Us | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> Contact</nav>
+    <h1>Contact & Directions</h1>
+    <p>Visit the clinic, call, or send a message — we respond within one working day.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="info-cards">
+      <div class="info-card reveal">
+        <span class="icon-chip">{{ icon('pin') }}</span>
+        <h3>Clinic Address</h3>
+        <p>{{ clinic.address }}<br><small>{{ clinic.landmark }}</small></p>
+      </div>
+      <div class="info-card reveal">
+        <span class="icon-chip">{{ icon('phone') }}</span>
+        <h3>Phone & WhatsApp</h3>
+        <p><a href="tel:{{ clinic.phone_digits }}">{{ clinic.phone }}</a><br><small>Mon–Sat during clinic hours</small></p>
+      </div>
+      <div class="info-card reveal">
+        <span class="icon-chip">{{ icon('mail') }}</span>
+        <h3>Email</h3>
+        <p><a href="mailto:{{ clinic.email }}">{{ clinic.email }}</a><br><small>Reports & enquiries welcome</small></p>
+      </div>
+      <div class="info-card reveal">
+        <span class="icon-chip">{{ icon('clock') }}</span>
+        <h3>Working Hours</h3>
+        <p>{% for days, time in clinic.hours %}{{ days }}: {{ time }}<br>{% endfor %}</p>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <form class="book-form reveal" method="POST" action="{{ url_for('contact') }}">
+        <h2>Send a Message</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Your Name *</label>
+            <input id="name" name="name" type="text" required placeholder="Full name">
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="So we can call you back">
+          </div>
+          <div class="field span2">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com">
+          </div>
+          <div class="field span2">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="e.g. Query about home physiotherapy">
+          </div>
+          <div class="field span2">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">{{ icon('mail') }} Send Message</button>
+      </form>
+
+      <div class="map-wrap reveal">
+        <iframe title="Map to {{ clinic.name }}" src="{{ clinic.map_embed }}" loading="lazy"></iframe>
+        <div class="map-note">
+          <strong>{{ clinic.name }}</strong>
+          <span>{{ clinic.address }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

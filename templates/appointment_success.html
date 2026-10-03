@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Appointment Requested | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <div class="success-card reveal">
+      <span class="success-icon">{{ icon('check') }}</span>
+      <h1>Appointment Request Received!</h1>
+      <p>Thank you, {{ appt.name }}. Your request has been recorded with reference
+        <strong class="ref">{{ appt.ref_code }}</strong>. The clinic will call
+        <strong>{{ appt.phone }}</strong> to confirm your slot within working hours.</p>
+
+      <div class="success-summary">
+        <div><span>Service</span><strong>{{ appt.service }}</strong></div>
+        <div><span>Date</span><strong>{{ appt.appt_date }}</strong></div>
+        <div><span>Preferred Time</span><strong>{{ appt.appt_time }}</strong></div>
+        <div><span>Reference</span><strong>{{ appt.ref_code }}</strong></div>
+      </div>
+
+      <h3>What happens next?</h3>
+      <ul class="check-list">
+        <li>{{ icon('check') }} The clinic confirms your slot by phone or WhatsApp.</li>
+        <li>{{ icon('check') }} Carry any previous reports, scans or prescriptions to your visit.</li>
+        <li>{{ icon('check') }} Wear comfortable clothing suitable for movement assessment.</li>
+        <li>{{ icon('check') }} Arrive 10 minutes early so your session starts on time.</li>
+      </ul>
+
+      <div class="hero-actions">
+        <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+           href="https://wa.me/{{ clinic.whatsapp }}?text={{ ('Hello, I have requested an appointment (ref ' ~ appt.ref_code ~ ').') | urlencode }}">
+           {{ icon('whatsapp') }} Confirm Faster on WhatsApp</a>
+        <a class="btn btn-ghost" href="{{ url_for('home') }}">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

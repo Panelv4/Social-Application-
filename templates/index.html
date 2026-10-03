@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, stars %}
+{% block title %}{{ doctor.name }} — Best Physiotherapist in {{ clinic.city }} | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <span class="eyebrow">{{ icon('shield') }} Trusted Physiotherapy in {{ clinic.city }}</span>
+      <h1>Move Freely. Live Fully. <span>Heal With Expert Hands.</span></h1>
+      <p class="lead">{{ doctor.name }} ({{ doctor.degrees }}) is a senior physiotherapist with {{ doctor.experience_years }} years of experience helping patients recover from pain, injury and surgery — without relying on medicines wherever possible.</p>
+      <ul class="hero-points">
+        <li>{{ icon('check') }} Personalised, goal-based treatment plans</li>
+        <li>{{ icon('check') }} Modern equipment & evidence-based techniques</li>
+        <li>{{ icon('check') }} Clinic consultations & home physiotherapy visits</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Appointment</a>
+        <a class="btn btn-outline btn-lg" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
+      </div>
+      <div class="hero-trust">
+        {{ stars(5) }}
+        <span><strong>4.9/5</strong> rated by 500+ recovered patients</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="Physiotherapist guiding a patient through rehabilitation exercises at {{ clinic.name }}">
+      <div class="float-card fc-1">
+        <span class="fc-icon">{{ icon('award') }}</span>
+        <div><strong>{{ doctor.experience_years }} Years</strong><small>Experience</small></div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="fc-icon">{{ icon('heart') }}</span>
+        <div><strong>5,000+</strong><small>Patients Recovered</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats-strip">
+  <div class="container stats-grid">
+    {% for value, label in stats %}
+    <div class="stat">
+      <strong>{{ value }}</strong>
+      <span>{{ label }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ ABOUT PREVIEW ============ -->
+<section class="section">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <img src="{{ url_for('static', filename='img/doctor.jpg') }}" alt="{{ doctor.name }}, physiotherapist at {{ clinic.name }}">
+      <div class="about-badge">{{ icon('award') }} <div><strong>MPT (Ortho)</strong><small>Certified Manual Therapist</small></div></div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">About Your Physiotherapist</span>
+      <h2>Meet {{ doctor.name }}</h2>
+      <p>{{ doctor.bio_short }}</p>
+      <ul class="check-list">
+        <li>{{ icon('check') }} {{ doctor.degrees }} — {{ doctor.experience_line }}</li>
+        <li>{{ icon('check') }} Specialist in orthopedic, sports & neurological rehabilitation</li>
+        <li>{{ icon('check') }} Advanced training in manual therapy, dry needling & kinesiology taping</li>
+        <li>{{ icon('check') }} Every patient treated personally — no rushed queues</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('about') }}">More About Dr. Sharma {{ icon('arrow') }}</a>
+        <a class="btn btn-ghost" href="{{ url_for('services') }}">Explore Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Treat</span>
+      <h2>Comprehensive Physiotherapy Services</h2>
+      <p>From chronic pain to post-surgical recovery — structured, evidence-based rehabilitation for every stage of healing.</p>
+    </div>
+    <div class="services-grid">
+      {% for s in services %}
+      <a class="service-card reveal" href="{{ url_for('service_detail', slug=s.slug) }}">
+        <span class="icon-chip">{{ icon(s.icon) }}</span>
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.short }}</p>
+        <span class="card-link">Learn more {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Hariom Physio Care</span>
+      <h2>Care That Goes Beyond the Treatment Table</h2>
+      <p>Choosing a physiotherapist is choosing a partner in your recovery. Here is what makes patients stay and recommend.</p>
+    </div>
+    <div class="why-grid">
+      {% for ic, title, text in why %}
+      <div class="feature reveal">
+        <span class="icon-chip chip-alt">{{ icon(ic) }}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow eyebrow-light">Your Recovery Journey</span>
+      <h2>How Treatment Works</h2>
+      <p>A transparent, four-step process — you always know what is happening and why.</p>
+    </div>
+    <div class="steps-grid">
+      {% for num, title, text in steps %}
+      <div class="step reveal">
+        <span class="step-num">{{ num }}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Patient Stories</span>
+      <h2>Recoveries That Speak for Themselves</h2>
+      <p>Real experiences from patients who trusted their recovery to {{ clinic.name }}.</p>
+    </div>
+    <div class="t-slider reveal" id="tSlider">
+      {% for t in testimonials %}
+      <figure class="t-slide {{ 'active' if loop.first }}">
+        {{ stars(5) }}
+        <blockquote>“{{ t.text }}”</blockquote>
+        <figcaption>
+          <span class="t-avatar">{{ t.name[0] }}</span>
+          <div><strong>{{ t.name }}</strong><small>{{ t.condition }}</small></div>
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    <div class="t-controls">
+      <button class="t-btn" id="tPrev" aria-label="Previous testimonial">&#8592;</button>
+      <div class="t-dots" id="tDots"></div>
+      <button class="t-btn" id="tNext" aria-label="Next testimonial">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG PREVIEW ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Health Library</span>
+      <h2>Advice From the Clinic</h2>
+      <p>Practical, physiotherapist-written guidance on pain, posture and recovery.</p>
+    </div>
+    <div class="blog-grid">
+      {% for p in posts %}
+      <a class="blog-card reveal" href="{{ url_for('blog_post', slug=p.slug) }}">
+        <div class="blog-banner" style="--accent: {{ p.accent }}">
+          <span class="blog-cat">{{ p.category }}</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">{{ icon('calendar') }} {{ p.date }} · {{ p.read_time }}</div>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.excerpt }}</p>
+          <span class="card-link">Read article {{ icon('arrow') }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Pain should never be “normal”.</h2>
+      <p>Book a consultation with {{ doctor.name }} and get a clear diagnosis, an honest plan and a realistic timeline for your recovery.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Appointment</a>
+      <a class="btn btn-outline-light btn-lg" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} Call the Clinic</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
