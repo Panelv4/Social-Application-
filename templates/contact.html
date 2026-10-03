@@ -17,7 +17,7 @@
       <div class="info-card reveal">
         <span class="icon-chip">{{ icon('pin') }}</span>
         <h3>Clinic Address</h3>
-        <p>{{ clinic.address }}<br><small>{{ clinic.landmark }}</small></p>
+        <p>{{ clinic.address }}{% if clinic.landmark %}<br><small>{{ clinic.landmark }}</small>{% endif %}</p>
       </div>
       <div class="info-card reveal">
         <span class="icon-chip">{{ icon('phone') }}</span>

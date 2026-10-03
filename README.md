@@ -62,9 +62,10 @@ clinic.db               # created at first run (appointments + messages) — git
 
 ## Customising for go-live
 
-The phone number, WhatsApp number, email, address, registration line and map embed in
-`clinic_data.py` are realistic **placeholders** — replace them with Dr. Sharma's real contact
-details before publishing. Social links live in `CLINIC["social"]`.
+The clinic's real address (FM105, Bakloh Cantt, Gwalior, Madhya Pradesh 474020) and phone /
+WhatsApp (+91 99774 68066) are already set. Remaining **placeholders** to replace before
+publishing: the email address, social media links and the doctor's council registration line —
+all in `clinic_data.py` (`CLINIC` and `DOCTOR` dictionaries).
 
 > Note: this repository previously contained a non-functional Flask social-app scaffold
 > (no templates). It was replaced by this website; the original code remains in Git history

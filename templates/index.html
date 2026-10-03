@@ -16,7 +16,7 @@
         <li>{{ icon('check') }} Clinic consultations & home physiotherapy visits</li>
       </ul>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Appointment</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Get Appointment</a>
         <a class="btn btn-outline btn-lg" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
       </div>
       <div class="hero-trust">
@@ -198,7 +198,7 @@
       <p>Book a consultation with {{ doctor.name }} and get a clear diagnosis, an honest plan and a realistic timeline for your recovery.</p>
     </div>
     <div class="cta-actions">
-      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Appointment</a>
+      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Get Appointment</a>
       <a class="btn btn-outline-light btn-lg" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} Call the Clinic</a>
     </div>
   </div>

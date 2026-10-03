@@ -59,13 +59,14 @@ DOCTOR = {
 CLINIC = {
     "name": "Hariom Physio Care",
     "tagline": "Restore Movement. Rebuild Strength. Revive Life.",
-    "city": "Jaipur",
-    "phone": "+91 98765 43210",
-    "phone_digits": "+919876543210",
-    "whatsapp": "919876543210",
+    "city": "Gwalior",
+    "state": "Madhya Pradesh",
+    "phone": "+91 99774 68066",
+    "phone_digits": "+919977468066",
+    "whatsapp": "919977468066",
     "email": "hariomphysiocare@gmail.com",
-    "address": "12, Health Plaza, MG Road, Malviya Nagar, Jaipur, Rajasthan 302017",
-    "landmark": "Opposite City Hospital Gate No. 2",
+    "address": "FM105, Bakloh Cantt, Gwalior, Madhya Pradesh 474020",
+    "landmark": "",
     "hours": [
         ("Monday – Saturday", "9:00 AM – 1:00 PM"),
         ("Monday – Saturday", "5:00 PM – 9:00 PM"),
@@ -74,7 +75,7 @@ CLINIC = {
     "hours_line": "Mon–Sat: 9 AM – 1 PM & 5 – 9 PM",
     "map_embed": (
         "https://www.openstreetmap.org/export/embed.html"
-        "?bbox=75.7873%2C26.8510%2C75.8273%2C26.8710&layer=mapnik&marker=26.8610%2C75.8073"
+        "?bbox=78.1622%2C26.1946%2C78.2022%2C26.2346&layer=mapnik&marker=26.2146%2C78.1822"
     ),
     "social": {
         "facebook": "#",

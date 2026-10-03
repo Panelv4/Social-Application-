@@ -20,7 +20,7 @@
   <div class="container topbar-inner">
     <div class="topbar-group">
       <span>{{ icon('clock') }} {{ clinic.hours_line }}</span>
-      <span class="hide-sm">{{ icon('pin') }} {{ clinic.city }}, Rajasthan</span>
+      <span class="hide-sm">{{ icon('pin') }} {{ clinic.city }}, {{ clinic.state }}</span>
     </div>
     <div class="topbar-group">
       <a href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
@@ -50,7 +50,7 @@
       {% for endpoint, label, active_eps in nav_items %}
         <a href="{{ url_for(endpoint) }}" class="{{ 'active' if request.endpoint in active_eps }}">{{ label }}</a>
       {% endfor %}
-      <a class="btn btn-primary nav-book" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Appointment</a>
+      <a class="btn btn-primary nav-book" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Get Appointment</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -92,7 +92,7 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('about') }}">About Dr. Hariom Sharma</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('book_appointment') }}">Book Appointment</a></li>
+        <li><a href="{{ url_for('book_appointment') }}">Get Appointment</a></li>
         <li><a href="{{ url_for('blog') }}">Health Blog</a></li>
         <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
       </ul>

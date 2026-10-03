@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% from "_macros.html" import icon %}
-{% block title %}Book Appointment | {{ clinic.name }}{% endblock %}
+{% block title %}Get Appointment | {{ clinic.name }}{% endblock %}
 
 {% block content %}
 <section class="page-hero">
   <div class="container">
-    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> Book Appointment</nav>
-    <h1>Book Your Appointment</h1>
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> Get Appointment</nav>
+    <h1>Get Your Appointment</h1>
     <p>Choose a convenient slot — the clinic confirms every booking personally within working hours.</p>
   </div>
 </section>
@@ -22,7 +22,7 @@
         </div>
         <div class="field">
           <label for="phone">Phone Number *</label>
-          <input id="phone" name="phone" type="tel" required placeholder="e.g. 98765 43210" value="{{ form.get('phone', '') }}">
+          <input id="phone" name="phone" type="tel" required placeholder="e.g. 99774 68066" value="{{ form.get('phone', '') }}">
         </div>
         <div class="field span2">
           <label for="email">Email (optional)</label>
