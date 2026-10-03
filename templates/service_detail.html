@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}{{ service.name }} in {{ clinic.city }} | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> <a href="{{ url_for('services') }}">Services</a> <span>/</span> {{ service.name }}</nav>
+    <div class="ph-row">
+      <span class="icon-chip chip-lg">{{ icon(service.icon) }}</span>
+      <div>
+        <h1>{{ service.name }}</h1>
+        <p>{{ service.short }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container detail-grid">
+    <article class="prose reveal">
+      {% for para in service.description %}
+      <p>{{ para }}</p>
+      {% endfor %}
+      <div class="note-card">
+        <span class="icon-chip">{{ icon('clock') }}</span>
+        <div><strong>Program duration:</strong> {{ service.duration }}</div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('book_appointment', service=service.name) }}">{{ icon('calendar') }} Book This Service</a>
+      </div>
+    </article>
+    <aside class="detail-side reveal">
+      <div class="side-card">
+        <h3>What This Service Covers</h3>
+        <ul class="check-list">
+          {% for b in service.benefits %}
+          <li>{{ icon('check') }} {{ b }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="side-card side-dark">
+        <h3>Talk to the Clinic</h3>
+        <p>Questions before booking? Call or message — we reply within one working day.</p>
+        <a class="btn btn-light" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Frequently Asked</span>
+      <h2>Common Physiotherapy Questions</h2>
+    </div>
+    <div class="faq-list">
+      {% for q, a in faqs[:4] %}
+      <details class="faq reveal" {{ 'open' if loop.first }}>
+        <summary>{{ q }}</summary>
+        <p>{{ a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Keep Exploring</span>
+      <h2>Other Services</h2>
+    </div>
+    <div class="services-grid three">
+      {% for s in related %}
+      <a class="service-card reveal" href="{{ url_for('service_detail', slug=s.slug) }}">
+        <span class="icon-chip">{{ icon(s.icon) }}</span>
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.short }}</p>
+        <span class="card-link">Learn more {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,137 @@
+{%- from "_macros.html" import icon -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{{ clinic.name }} | {{ doctor.name }}, Physiotherapist in {{ clinic.city }}{% endblock %}</title>
+<meta name="description" content="{% block meta %}{{ clinic.name }} — physiotherapy clinic of {{ doctor.name }} ({{ doctor.degrees }}) in {{ clinic.city }}. Orthopedic, sports, neurological & post-surgical rehabilitation. Book your appointment today.{% endblock %}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M26 14h12v12h12v12H38v12H26V38H14V26h12z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+
+{# ---------- top bar ---------- #}
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-group">
+      <span>{{ icon('clock') }} {{ clinic.hours_line }}</span>
+      <span class="hide-sm">{{ icon('pin') }} {{ clinic.city }}, {{ clinic.state }}</span>
+    </div>
+    <div class="topbar-group">
+      <a href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
+      <a class="hide-sm" href="mailto:{{ clinic.email }}">{{ icon('mail') }} {{ clinic.email }}</a>
+    </div>
+  </div>
+</div>
+
+{# ---------- navbar ---------- #}
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="{{ url_for('home') }}">
+      <span class="brand-mark">{{ icon('cross') }}</span>
+      <span class="brand-text">
+        <strong>{{ clinic.name }}</strong>
+        <small>{{ doctor.name }} · Physiotherapist</small>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      {% set nav_items = [
+        ('home', 'Home', ['home']),
+        ('about', 'About', ['about']),
+        ('services', 'Services', ['services', 'service_detail']),
+        ('blog', 'Blog', ['blog', 'blog_post']),
+        ('contact', 'Contact', ['contact']),
+      ] %}
+      {% for endpoint, label, active_eps in nav_items %}
+        <a href="{{ url_for(endpoint) }}" class="{{ 'active' if request.endpoint in active_eps }}">{{ label }}</a>
+      {% endfor %}
+      <a class="btn btn-primary nav-book" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Get Appointment</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+{# ---------- flash messages ---------- #}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="container flash-wrap">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+{# ---------- footer ---------- #}
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="f-col f-brand">
+      <a class="brand brand-light" href="{{ url_for('home') }}">
+        <span class="brand-mark">{{ icon('cross') }}</span>
+        <span class="brand-text"><strong>{{ clinic.name }}</strong><small>{{ doctor.name }} · Physiotherapist</small></span>
+      </a>
+      <p>{{ clinic.tagline }} A patient-first physiotherapy clinic in {{ clinic.city }} delivering honest, evidence-based rehabilitation for pain, injury and surgery recovery.</p>
+      <div class="f-social">
+        <a href="{{ clinic.social.facebook }}" aria-label="Facebook">{{ icon('facebook') }}</a>
+        <a href="{{ clinic.social.instagram }}" aria-label="Instagram">{{ icon('instagram') }}</a>
+        <a href="{{ clinic.social.youtube }}" aria-label="YouTube">{{ icon('youtube') }}</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About Dr. Hariom Sharma</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('book_appointment') }}">Get Appointment</a></li>
+        <li><a href="{{ url_for('blog') }}">Health Blog</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="{{ url_for('service_detail', slug='orthopedic-physiotherapy') }}">Orthopedic Physiotherapy</a></li>
+        <li><a href="{{ url_for('service_detail', slug='sports-injury-rehabilitation') }}">Sports Injury Rehab</a></li>
+        <li><a href="{{ url_for('service_detail', slug='neurological-physiotherapy') }}">Neurological Physiotherapy</a></li>
+        <li><a href="{{ url_for('service_detail', slug='post-surgical-rehabilitation') }}">Post-Surgical Rehab</a></li>
+        <li><a href="{{ url_for('service_detail', slug='home-physiotherapy') }}">Home Physiotherapy</a></li>
+        <li><a href="{{ url_for('service_detail', slug='posture-ergonomics') }}">Posture & Ergonomics</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Clinic Info</h4>
+      <ul class="f-contact">
+        <li>{{ icon('pin') }} <span>{{ clinic.address }}</span></li>
+        <li>{{ icon('phone') }} <a href="tel:{{ clinic.phone_digits }}">{{ clinic.phone }}</a></li>
+        <li>{{ icon('mail') }} <a href="mailto:{{ clinic.email }}">{{ clinic.email }}</a></li>
+        <li>{{ icon('clock') }} <span>{{ clinic.hours_line }} · Sun: by appointment</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© {{ current_year }} {{ clinic.name }} · {{ doctor.name }}. All rights reserved.</p>
+      <p class="hide-sm">{{ doctor.registration }}</p>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+   href="https://wa.me/{{ clinic.whatsapp }}?text={{ 'Hello Dr. Hariom Sharma, I would like to book a physiotherapy appointment.' | urlencode }}">
+  {{ icon('whatsapp') }}
+</a>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

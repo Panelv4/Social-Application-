@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}{{ post.title }} | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> <a href="{{ url_for('blog') }}">Blog</a> <span>/</span> Article</nav>
+    <span class="blog-cat hero-cat" style="--accent: {{ post.accent }}">{{ post.category }}</span>
+    <h1>{{ post.title }}</h1>
+    <p class="post-meta">{{ icon('user') }} {{ doctor.name }} · {{ icon('calendar') }} {{ post.date }} · {{ post.read_time }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container article-grid">
+    <article class="prose reveal">
+      {% for kind, text in post.content %}
+        {% if kind == 'h2' %}<h2>{{ text }}</h2>
+        {% elif kind == 'list' %}<ul class="check-list">{% for item in text %}<li>{{ icon('check') }} {{ item }}</li>{% endfor %}</ul>
+        {% else %}<p>{{ text }}</p>{% endif %}
+      {% endfor %}
+      <div class="author-card">
+        <img src="{{ url_for('static', filename='img/doctor.jpg') }}" alt="{{ doctor.name }}">
+        <div>
+          <strong>{{ doctor.name }}</strong>
+          <span>{{ doctor.degrees }} · Physiotherapist, {{ clinic.name }}</span>
+          <p>{{ doctor.bio_short }}</p>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book a Consultation</a>
+      </div>
+    </article>
+    <aside class="detail-side reveal">
+      <div class="side-card">
+        <h3>More Articles</h3>
+        <ul class="post-links">
+          {% for o in others %}
+          <li><a href="{{ url_for('blog_post', slug=o.slug) }}"><span class="blog-cat" style="--accent: {{ o.accent }}">{{ o.category }}</span> {{ o.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="side-card side-dark">
+        <h3>Pain lasting 2+ weeks?</h3>
+        <p>Don't wait it out. A proper assessment now saves months of guesswork later.</p>
+        <a class="btn btn-light" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Now</a>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}
