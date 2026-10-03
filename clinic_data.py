@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Central content store for the Hariom Physio Care website.
+Central content store for the Saransh Physiotherapy website.
 
 Edit the values in this file to update the phone number, address,
 timings, doctor biography, services, testimonials and blog articles —
@@ -10,37 +10,39 @@ no template changes required.
 DOCTOR = {
     "name": "Dr. Hariom Sharma",
     "title": "Physiotherapist",
-    "degrees": "BPT, MPT (Orthopaedics)",
+    "degrees": "B.P.T, PGDNR (Neuro)",
     "experience_years": "10+",
-    "experience_line": "10+ years of clinical experience",
-    "registration": "Registered Physiotherapist — State Physiotherapy & Occupational Therapy Council",
+    "experience_line": "Well-established practice in Gwalior, M.P.",
+    "registration": "Registered Physiotherapist, Madhya Pradesh",
     "bio_short": (
-        "Dr. Hariom Sharma is a senior physiotherapist with over a decade of hands-on "
-        "experience in orthopaedic, sports and neurological rehabilitation. He is known "
-        "for his patient-first approach: every treatment plan starts with listening, "
-        "followed by a detailed assessment and honest, evidence-based advice."
+        "Dr. Hariom Sharma is one of the best physiotherapists in Gwalior, M.P. He offers "
+        "physiotherapy treatment at his DD Nagar, Gwalior center. With a well-established "
+        "practice, he is an expert in treating conditions such as Back Pain, Neck Pain, Knee "
+        "Pain, Sciatica, Cervical Spondylosis, Disc Bulge, Frozen Shoulder, Arthritis, "
+        "Osteoporosis, Muscle Weakness and balancing problems."
     ),
     "bio_long": [
-        "Dr. Hariom Sharma completed his Bachelor of Physiotherapy (BPT) and went on to earn a "
-        "Master of Physiotherapy (MPT) specialising in Orthopaedics. Over 10+ years of practice he "
-        "has treated more than 5,000 patients — from office workers with chronic back pain and "
-        "athletes with ligament injuries, to seniors recovering from joint replacement surgery and "
-        "stroke survivors relearning to walk.",
-        "His treatment philosophy is simple: treat the person, not just the report. Dr. Sharma "
-        "combines skilled manual therapy with progressive, science-backed exercise rehabilitation "
-        "and modern electrotherapy modalities, and he takes the time to explain the 'why' behind "
-        "every exercise so patients stay motivated and recover faster.",
-        "He has completed advanced certifications in manual therapy, dry needling, kinesiology "
-        "taping and sports injury rehabilitation, and regularly conducts community camps on posture, "
-        "ergonomics and fall prevention for senior citizens.",
+        "Dr. Hariom Sharma is one of the best physiotherapists in Gwalior, M.P. He offers "
+        "physiotherapy treatment at his DD Nagar, Gwalior center. With a well-established practice, "
+        "he is an expert in treating conditions such as Back Pain, Neck Pain, Knee Pain, Sciatica, "
+        "Cervical Spondylosis, Disc Bulge, Frozen Shoulder, Arthritis, Osteoporosis, Muscle "
+        "Weakness and balancing problems.",
+        "Dr. Hariom Sharma is a B.P.T & PGDNR (Neuro) from Swami Vivekanand National Institute of "
+        "Rehabilitation Training & Research. His post-graduate training in neuro rehabilitation "
+        "gives him a special edge in treating nerve-related pain, muscle weakness and balance "
+        "disorders — combined with skilled hands-on orthopaedic physiotherapy for complete, "
+        "lasting recovery.",
+        "At Saransh Physiotherapy, every patient receives a detailed assessment, an honest "
+        "explanation of the problem and a written, goal-based treatment plan. Treatment combines "
+        "manual therapy, guided exercise rehabilitation and modern electrotherapy — and every "
+        "patient leaves knowing exactly what to do at home so recovery continues between sessions.",
     ],
     "qualifications": [
-        "Master of Physiotherapy (MPT) — Orthopaedics",
-        "Bachelor of Physiotherapy (BPT)",
-        "Certified Manual Therapist (Maitland Concept)",
-        "Advanced Certification in Dry Needling",
-        "Certified Kinesiology Taping Practitioner (KT1 & KT2)",
-        "Sports Injury Rehabilitation & Return-to-Play Protocols",
+        "Bachelor of Physiotherapy (B.P.T)",
+        "PGDNR (Neuro) — Swami Vivekanand National Institute of Rehabilitation Training & Research",
+        "Expert: Back Pain, Neck Pain, Knee Pain, Sciatica & Cervical Spondylosis",
+        "Expert: Disc Bulge, Frozen Shoulder, Arthritis & Osteoporosis",
+        "Expert: Muscle Weakness & Balancing Problems",
     ],
     "highlights": [
         ("10+", "Years of clinical practice across hospitals and private clinics"),
@@ -57,7 +59,7 @@ DOCTOR = {
 }
 
 CLINIC = {
-    "name": "Hariom Physio Care",
+    "name": "Saransh Physiotherapy",
     "tagline": "Restore Movement. Rebuild Strength. Revive Life.",
     "city": "Gwalior",
     "state": "Madhya Pradesh",
@@ -65,7 +67,7 @@ CLINIC = {
     "phone_digits": "+919977468066",
     "whatsapp": "919977468066",
     "email": "hariomphysiocare@gmail.com",
-    "address": "FM105, Bakloh Cantt, Gwalior, Madhya Pradesh 474020",
+    "address": "CE-06, DD Nagar, Gwalior, Madhya Pradesh 474020",
     "landmark": "",
     "hours": [
         ("Monday – Saturday", "9:00 AM – 1:00 PM"),
@@ -75,7 +77,7 @@ CLINIC = {
     "hours_line": "Mon–Sat: 9 AM – 1 PM & 5 – 9 PM",
     "map_embed": (
         "https://www.openstreetmap.org/export/embed.html"
-        "?bbox=78.1622%2C26.1946%2C78.2022%2C26.2346&layer=mapnik&marker=26.2146%2C78.1822"
+        "?bbox=78.1225%2C26.1929%2C78.1625%2C26.2329&layer=mapnik&marker=26.2129%2C78.1425"
     ),
     "social": {
         "facebook": "#",
@@ -203,7 +205,7 @@ SERVICES = [
             "soft-tissue release and myofascial techniques, Dr. Sharma treats restricted joints and "
             "overworked muscles directly — often providing noticeable relief within the first few "
             "sessions.",
-            "Manual therapy at Hariom Physio Care is never a stand-alone treatment. It is used to open a "
+            "Manual therapy at Saransh Physiotherapy is never a stand-alone treatment. It is used to open a "
             "window of pain-free movement, which is then locked in with corrective exercise so the result "
             "lasts.",
         ],
@@ -289,7 +291,7 @@ SERVICES = [
 ]
 
 WHY_CHOOSE = [
-    ("award", "Qualified & Experienced", "MPT (Ortho) with 10+ years and 5,000+ patients treated across hospital and private practice."),
+    ("award", "Qualified & Experienced", "B.P.T, PGDNR (Neuro) from Swami Vivekanand NIRT&R, with a well-established practice in Gwalior."),
     ("shield", "Honest, Evidence-Based Care", "You will always be told what you need, what you don't, and when physiotherapy alone is not enough."),
     ("user", "One-Patient-at-a-Time", "No rushed queues. Every session is a dedicated, hands-on appointment with the doctor himself."),
     ("zap", "Modern Equipment", "IFT, ultrasound, TENS and laser therapy alongside progressive rehab equipment for measurable results."),
@@ -345,7 +347,7 @@ BLOG_POSTS = [
         "date": "12 September 2026",
         "read_time": "4 min read",
         "accent": "#0f766e",
-        "excerpt": "Nervous about your first physiotherapy appointment? Here is exactly how a first consultation at Hariom Physio Care unfolds — and how to prepare for it.",
+        "excerpt": "Nervous about your first physiotherapy appointment? Here is exactly how a first consultation at Saransh Physiotherapy unfolds — and how to prepare for it.",
         "content": [
             ("p", "Many patients arrive at their first physiotherapy appointment unsure of what will happen. Will I be given machines? Will it hurt? Do I need a doctor's referral? This short guide removes the mystery."),
             ("h2", "1. A conversation, not a formality"),
@@ -353,7 +355,7 @@ BLOG_POSTS = [
             ("h2", "2. The physical assessment"),
             ("p", "Next comes a hands-on examination. You may be asked to walk, bend, squat or lift your arm while the therapist observes your movement. Specific tests check joint mobility, muscle strength, nerve tension and posture. This is how the true source of your pain is found — it is often not where you feel it."),
             ("h2", "3. A clear explanation and plan"),
-            ("p", "You should leave your first visit understanding three things: what is wrong, why it happened, and what the plan is. At Hariom Physio Care you receive a written goal-based plan with an estimated timeline, so you can judge progress objectively."),
+            ("p", "You should leave your first visit understanding three things: what is wrong, why it happened, and what the plan is. At Saransh Physiotherapy you receive a written goal-based plan with an estimated timeline, so you can judge progress objectively."),
             ("h2", "How to prepare"),
             ("list", ["Wear comfortable, loose clothing that exposes the problem area (shorts for knee pain, a vest for shoulder pain).", "Carry previous prescriptions, scans and reports.", "Note down your top 3 goals — e.g. 'sleep on my shoulder', 'climb stairs', 'sit 8 hours pain-free'.", "Arrive 10 minutes early so you are relaxed."]),
             ("p", "First visits are the foundation of recovery. Come with questions — a good physiotherapist loves answering them."),

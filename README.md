@@ -1,6 +1,6 @@
-# Hariom Physio Care — Physiotherapy Website
+# Saransh Physiotherapy — Physiotherapy Website (Gwalior)
 
-A complete, production-style website for **Dr. Hariom Sharma (BPT, MPT Orthopaedics) — Physiotherapist**,
+A complete, production-style website for **Dr. Hariom Sharma (B.P.T, PGDNR Neuro) — Physiotherapist, Gwalior**,
 built with **Flask + SQLite** and a fully custom responsive front-end (no CSS framework).
 
 ## Features
@@ -62,7 +62,7 @@ clinic.db               # created at first run (appointments + messages) — git
 
 ## Customising for go-live
 
-The clinic's real address (FM105, Bakloh Cantt, Gwalior, Madhya Pradesh 474020) and phone /
+The clinic's real address (CE-06, DD Nagar, Gwalior, Madhya Pradesh 474020) and phone /
 WhatsApp (+91 99774 68066) are already set. Remaining **placeholders** to replace before
 publishing: the email address, social media links and the doctor's council registration line —
 all in `clinic_data.py` (`CLINIC` and `DOCTOR` dictionaries).

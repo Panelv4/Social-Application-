@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Hariom Physio Care — full website for Dr. Hariom Sharma (Physiotherapist)
+Saransh Physiotherapy — full website for Dr. Hariom Sharma (Physiotherapist), Gwalior
 
 Run:   python3 App.py          (serves on 0.0.0.0:8080)
 Admin: /admin  (default login admin / admin123 — override with env vars)
