@@ -271,15 +271,15 @@ a { color: var(--primary); text-decoration: none; }
 .step p { font-size: 0.9rem; }
 
 /* ---------------- testimonials ---------------- */
-.t-slider { position: relative; max-width: 800px; margin: 0 auto; min-height: 300px; }
+.t-slider { position: relative; max-width: 800px; margin: 0 auto; display: grid; }
 .t-slide {
-  position: absolute; inset: 0; opacity: 0; transform: translateY(14px);
-  transition: opacity 0.5s, transform 0.5s; pointer-events: none;
+  grid-area: 1 / 1; position: relative; opacity: 0; transform: translateY(14px);
+  transition: opacity 0.5s, transform 0.5s; pointer-events: none; visibility: hidden;
   background: #fff; border: 1px solid var(--line); border-radius: 20px;
   padding: 42px 48px; box-shadow: var(--shadow);
   display: flex; flex-direction: column; gap: 18px; justify-content: center;
 }
-.t-slide.active { opacity: 1; transform: none; pointer-events: auto; }
+.t-slide.active { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
 .t-slide blockquote { font-size: 1.12rem; color: var(--ink); line-height: 1.7; }
 .t-slide figcaption { display: flex; align-items: center; gap: 14px; }
 .t-slide figcaption strong { display: block; color: var(--ink); font-family: var(--font-head); }
@@ -307,6 +307,7 @@ a { color: var(--primary); text-decoration: none; }
 .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .blog-banner {
   height: 130px; position: relative;
+  background: linear-gradient(120deg, var(--accent) 0%, #0b2530 100%);
   background:
     radial-gradient(240px 120px at 85% 20%, rgba(255, 255, 255, 0.22), transparent 60%),
     linear-gradient(120deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 65%, #0b2530) 100%);

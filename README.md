@@ -22,8 +22,14 @@ built with **Flask + SQLite** and a fully custom responsive front-end (no CSS fr
 ## Run it
 
 ```bash
+bash run.sh           # installs Flask if missing, serves http://0.0.0.0:8080
+```
+
+or manually:
+
+```bash
 pip install -r Requirements.txt
-python3 App.py          # serves http://0.0.0.0:8080
+python3 App.py        # serves http://0.0.0.0:8080
 ```
 
 Then open the live preview or `http://localhost:8080`.
