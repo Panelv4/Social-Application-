@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Health Blog | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> Blog</nav>
+    <h1>Health Library</h1>
+    <p>Practical, physiotherapist-written guidance on pain, posture, injury and recovery.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container blog-grid wide">
+    {% for p in posts %}
+    <a class="blog-card reveal" href="{{ url_for('blog_post', slug=p.slug) }}">
+      <div class="blog-banner" style="--accent: {{ p.accent }}">
+        <span class="blog-cat">{{ p.category }}</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">{{ icon('calendar') }} {{ p.date }} · {{ p.read_time }}</div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.excerpt }}</p>
+        <span class="card-link">Read article {{ icon('arrow') }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Reading is not a treatment plan.</h2>
+      <p>If your pain has lasted more than two weeks, get it properly assessed.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book a Consultation</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

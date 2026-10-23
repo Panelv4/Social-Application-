@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Physiotherapy Services in {{ clinic.city }} | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> Services</nav>
+    <h1>Our Physiotherapy Services</h1>
+    <p>Eight specialised areas of practice — one standard of honest, evidence-based care.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="services-grid detail">
+      {% for s in services %}
+      <a class="service-card big reveal" href="{{ url_for('service_detail', slug=s.slug) }}">
+        <span class="icon-chip">{{ icon(s.icon) }}</span>
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.short }}</p>
+        <ul class="mini-list">
+          {% for b in s.benefits[:3] %}
+          <li>{{ icon('check') }} {{ b }}</li>
+          {% endfor %}
+        </ul>
+        <span class="card-link">View details {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Not sure which service you need?</h2>
+      <p>That is exactly what the first assessment is for. Describe your problem and we will guide you to the right care.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Assessment</a>
+      <a class="btn btn-outline-light btn-lg" href="https://wa.me/{{ clinic.whatsapp }}?text={{ 'Hello, I am not sure which physiotherapy service I need.' | urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

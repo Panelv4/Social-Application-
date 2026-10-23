@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, stars %}
+{% block title %}About {{ doctor.name }} | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ url_for('home') }}">Home</a> <span>/</span> About</nav>
+    <h1>About {{ doctor.name }}</h1>
+    <p>{{ doctor.degrees }} · Physiotherapist in {{ clinic.city }} · {{ doctor.experience_line }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <img src="{{ url_for('static', filename='img/doctor.jpg') }}" alt="{{ doctor.name }}, physiotherapist">
+      <div class="about-badge">{{ icon('award') }} <div><strong>PGDNR (Neuro)</strong><small>B.P.T · Neuro Rehabilitation</small></div></div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">Biography</span>
+      <h2>A Physiotherapist Who Treats the Person, Not Just the Report</h2>
+      {% for para in doctor.bio_long %}
+      <p>{{ para }}</p>
+      {% endfor %}
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Consult Dr. Sharma</a>
+        <a class="btn btn-outline" href="tel:{{ clinic.phone_digits }}">{{ icon('phone') }} {{ clinic.phone }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container two-col">
+    <div class="reveal">
+      <span class="eyebrow">Credentials</span>
+      <h2>Qualifications & Certifications</h2>
+      <ul class="check-list">
+        {% for q in doctor.qualifications %}
+        <li>{{ icon('check') }} {{ q }}</li>
+        {% endfor %}
+      </ul>
+      <p class="muted-note">{{ doctor.registration }}</p>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">At a Glance</span>
+      <h2>Career Highlights</h2>
+      <div class="highlight-grid">
+        {% for value, text in doctor.highlights %}
+        <div class="highlight-card">
+          <strong>{{ value }}</strong>
+          <span>{{ text }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="clinic-shot">
+        <img src="{{ url_for('static', filename='img/clinic.jpg') }}" alt="Treatment area at {{ clinic.name }}">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Treatment Philosophy</span>
+      <h2>The Saransh Physiotherapy Approach</h2>
+      <p>Four principles guide every single consultation at the clinic.</p>
+    </div>
+    <div class="why-grid four">
+      {% for title, text in doctor.approach %}
+      <div class="feature reveal">
+        <span class="step-badge">{{ loop.index }}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Ready to start your recovery?</h2>
+      <p>Your first consultation includes a complete assessment and a written, goal-based treatment plan.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="{{ url_for('book_appointment') }}">{{ icon('calendar') }} Book Your Visit</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

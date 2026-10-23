@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Admin Login | {{ clinic.name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <form class="book-form admin-login reveal" method="POST" action="{{ url_for('admin_login') }}">
+      <span class="icon-chip">{{ icon('shield') }}</span>
+      <h2>Clinic Admin</h2>
+      <p class="muted-note">Staff access only — appointments and messages dashboard.</p>
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary btn-lg" type="submit" style="width:100%">Sign In</button>
+      <p class="form-note">Default credentials: <code>admin</code> / <code>admin123</code> (change via ADMIN_USER / ADMIN_PASS env vars).</p>
+    </form>
+  </div>
+</section>
+{% endblock %}
